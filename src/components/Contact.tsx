@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
 
 interface ContactProps {
   darkMode: boolean;
@@ -31,7 +32,6 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
       })
       .then(
         () => {
-          console.log('SUCCESS!');
           alert('Thank you for your message! I will get back to you soon.');
           setFormData({
             name: '',
@@ -41,7 +41,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
           });
         },
         (error) => {
-          console.log('FAILED...', error.text);
+          console.error('FAILED...', error.text);
           alert('Failed to send the message. Please try again.');
         },
       );
@@ -64,10 +64,52 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
               I'm currently looking for new opportunities and my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
             </p>
 
-            {/* Add your contact details here */}
-            {/* Example: */}
             <div className="space-y-6">
-              {/* Email, Phone, Location etc. */}
+              <div className="flex items-start">
+                <Mail className="h-6 w-6 text-[#64ffda]" />
+                <div className="ml-4">
+                  <h3 className="text-lg font-medium">Email</h3>
+                  <p className="text-gray-300">amarshyam9199@gmail.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <Phone className="h-6 w-6 text-[#64ffda]" />
+                <div className="ml-4">
+                  <h3 className="text-lg font-medium">Phone</h3>
+                  <p className="text-gray-300">+918969079008</p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <MapPin className="h-6 w-6 text-[#64ffda]" />
+                <div className="ml-4">
+                  <h3 className="text-lg font-medium">Location</h3>
+                  <p className="text-gray-300">Lovely Professional University, Phagwara, Punjab, India</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <h3 className="text-lg font-medium mb-4">Connect With Me</h3>
+              <div className="flex space-x-4">
+                <a
+                  href="https://github.com/amarrr11"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#64ffda] hover:text-[#64ffda]/80 transition-colors"
+                >
+                  <Github className="h-8 w-8" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/amarnathtripathy/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#64ffda] hover:text-[#64ffda]/80 transition-colors"
+                >
+                  <Linkedin className="h-8 w-8" />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -75,9 +117,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
             <form ref={form} onSubmit={handleSubmit} className="p-8 rounded-lg bg-[#112240]">
               <div className="grid grid-cols-1 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1">
-                    Name
-                  </label>
+                  <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
                   <input
                     type="text"
                     id="name"
@@ -90,9 +130,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-1">
-                    Email
-                  </label>
+                  <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
                   <input
                     type="email"
                     id="email"
@@ -105,9 +143,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium mb-1">
-                    Subject
-                  </label>
+                  <label htmlFor="subject" className="block text-sm font-medium mb-1">Subject</label>
                   <input
                     type="text"
                     id="subject"
@@ -120,9 +156,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-1">
-                    Message
-                  </label>
+                  <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
                   <textarea
                     id="message"
                     name="message"
@@ -139,6 +173,7 @@ const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                     type="submit"
                     className="w-full bg-[#64ffda] text-[#0a192f] font-medium py-3 px-6 rounded flex items-center justify-center hover:bg-opacity-80 transition-all duration-300"
                   >
+                    <Send className="h-5 w-5 mr-2" />
                     Send Message
                   </button>
                 </div>
